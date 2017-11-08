@@ -243,7 +243,8 @@ typedef void (^_FDViewControllerWillAppearInjectBlock)(UIViewController *viewCon
 
 - (BOOL)fd_interactivePopDisabled
 {
-    return [objc_getAssociatedObject(self, _cmd) boolValue];
+    NSNumber *disable = objc_getAssociatedObject(self, _cmd);
+    return disable == nil || [disable boolValue];
 }
 
 - (void)setFd_interactivePopDisabled:(BOOL)disabled
